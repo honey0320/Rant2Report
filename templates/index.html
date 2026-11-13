@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rant2Report</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Rant<span>2</span>Report</a>
+    <span class="tag">TURN YOUR THOUGHTS INTO ACTION</span>
+  </header>
+  <main class="shell">
+    <section class="intro">
+      <p class="eyebrow">COMPLAINT UNDERSTANDING & REPORT GENERATION</p>
+      <h1>Your problem.<br><em>Clearly understood.</em></h1>
+      <p class="lead">Explain what happened in your own words. Rant2Report analyses the meaning and creates a fresh, professional complaint report for you.</p>
+    </section>
+
+    <section class="workspace">
+      <div class="input-panel">
+        <div class="panel-heading">
+          <div><span class="step">01</span><h2>Tell us what happened</h2></div>
+          <span class="small-label">YOUR WORDS, YOUR WAY</span>
+        </div>
+        <textarea id="complaint" maxlength="5000" placeholder="Don't worry about formal language. Just explain the issue, what happened, how long it has been going on, and how it affects you..."></textarea>
+        <div class="input-bottom">
+          <button class="sample" id="sampleBtn" type="button">Try a sample complaint ↗</button>
+          <span id="count">0 / 5000</span>
+        </div>
+        <button class="primary" id="generateBtn" type="button">Understand & generate report <span>→</span></button>
+        <p class="privacy">Your complaint is sent to the configured AI service to generate the report.</p>
+      </div>
+
+      <div class="side-note">
+        <span class="side-number">A / B</span>
+        <h3>Not just<br>spell-checking.</h3>
+        <p><b>NLP</b> identifies the issue, context, category and urgency.</p>
+        <p><b>Generative AI</b> uses that understanding to write a new report from scratch.</p>
+        <div class="mini-line"></div>
+        <p class="tiny">The generated report is based on the facts you provide. Review it before submitting.</p>
+      </div>
+    </section>
+
+    <div id="status" class="status" aria-live="polite"></div>
+
+    <section id="results" class="results hidden">
+      <div class="results-head">
+        <div><p class="eyebrow">YOUR COMPLAINT, UNDERSTOOD</p><h2>Here's what we found.</h2></div>
+        <span class="status-pill">ANALYSED</span>
+      </div>
+      <div class="analysis-grid">
+        <div class="metric"><span>CATEGORY</span><strong id="category">—</strong></div>
+        <div class="metric"><span>ESTIMATED PRIORITY</span><strong id="priority">—</strong></div>
+        <div class="metric"><span>DURATION</span><strong id="duration">Not specified</strong></div>
+        <div class="metric"><span>IDENTIFIED IMPACT</span><strong id="impact">—</strong></div>
+      </div>
+
+      <div class="report-card">
+        <div class="report-top"><span class="step">02</span><span class="small-label">GENERATED FRESH BY AI</span></div>
+        <h2 id="reportTitle"></h2>
+        <div class="report-section"><label>SUMMARY</label><p id="summary"></p></div>
+        <div class="report-section"><label>FORMAL COMPLAINT</label><p id="description"></p></div>
+        <div class="report-section action"><label>REQUESTED ACTION</label><p id="requestedAction"></p></div>
+        <div id="missingWrap" class="report-section hidden"><label>DETAILS YOU MAY ADD</label><ul id="missing"></ul></div>
+        <div class="report-actions">
+          <button class="primary compact" id="copyBtn" type="button">Copy report</button>
+          <button class="secondary" id="downloadBtn" type="button">Download .txt</button>
+        </div>
+      </div>
+
+      <div class="destinations">
+        <div class="results-head"><div><p class="eyebrow">WHAT YOU CAN DO NEXT</p><h2>Where to report it</h2></div></div>
+        <div id="destinationList" class="destination-list"></div>
+      </div>
+      <p class="disclaimer">Recommendations are informational. Check the official portal's eligibility and instructions before submitting. Rant2Report does not submit complaints on your behalf.</p>
+    </section>
+    <footer>RANT2REPORT <span>·</span> UNDERSTAND THE ISSUE. COMMUNICATE IT CLEARLY.</footer>
+  </main>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
